@@ -1,6 +1,8 @@
 ---
 name: impl-frontend-react
 description: React/Vite 환경에서 공식 문서 기반 Best Practice로 기능 구현. 기존 프로젝트 패턴을 우선하되 최신 권장 사항 적용.
+triggers:
+  - auto: context-collector가 React/Vite 스택 탐지 시 라우팅
 ---
 
 # Implementation: Frontend React

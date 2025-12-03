@@ -1,55 +1,29 @@
-# Skill Auto-Trigger Rules
+# kk3june-skills
 
-사용자 요청 패턴에 따라 적절한 스킬을 자동으로 활성화한다.
-
-## 트리거 매트릭스
-
-| 요청 패턴 | 활성화 스킬 |
-|----------|------------|
-| "구현해줘", "만들어줘", "추가해줘" | context-collector → impl-frontend-* |
-| "리팩토링", "개선", "정리", "클린업" | refactoring |
-| "코드 스멜", "안티패턴", "품질" | refactoring |
-| "새 프로젝트", "스킬 생성", "레퍼런스 동기화" | skill-manager |
+사용자 요청 시 각 SKILL.md의 `triggers` 필드를 확인하여 적절한 스킬을 활성화한다.
 
 ## 스킬 활성화 방법
 
-요청이 위 패턴에 해당하면:
+1. 사용자 요청에서 키워드 탐지
+2. `~/.claude/skills/*/SKILL.md`의 triggers 필드와 매칭
+3. 매칭된 스킬의 SKILL.md 로드
+4. 스킬에 정의된 Phase 순서대로 진행
 
-```
-1. 해당 스킬의 SKILL.md 읽기
-2. 필요한 references/ 파일 로드
-3. 스킬에 정의된 Phase 순서대로 진행
-```
+## 스킬 목록
+
+| 스킬 | 트리거 예시 |
+|------|------------|
+| context-collector | "구현해줘", "만들어줘", "기능" |
+| skill-manager | "스킬 생성", "레퍼런스 동기화" |
+| impl-frontend-react | context-collector가 React/Vite 탐지 시 자동 |
+| refactoring | "리팩토링", "개선", "정리", "품질" |
 
 ## 스킬 위치
 
 ```
 ~/.claude/skills/
-├── context-collector/SKILL.md
-├── skill-manager/SKILL.md
-├── impl-frontend-react/SKILL.md
-└── refactoring/SKILL.md
-```
-
-## 예시
-
-### 리팩토링 요청
-```
-User: "이 컴포넌트 개선할 부분 있어?"
-
-→ refactoring 스킬 활성화
-→ ~/.claude/skills/refactoring/SKILL.md 읽기
-→ Phase 1: Code Smell 분석
-→ Phase 2: Frontend Fundamentals 4가지 기준 체크
-→ ...
-```
-
-### 기능 구현 요청
-```
-User: "로그인 기능 구현해줘"
-
-→ context-collector 스킬 활성화
-→ 스택 탐지 (React + Vite)
-→ impl-frontend-react 스킬로 라우팅
-→ Phase별 구현 진행
+├── context-collector/SKILL.md   # triggers 정의됨
+├── skill-manager/SKILL.md       # triggers 정의됨
+├── impl-frontend-react/SKILL.md # auto trigger
+└── refactoring/SKILL.md         # triggers 정의됨
 ```

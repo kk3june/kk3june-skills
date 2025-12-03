@@ -1,6 +1,13 @@
 ---
 name: refactoring
 description: Martin Fowler의 Refactoring 2판과 Clean Code 원칙 기반 체계적 리팩토링. Code Smells 탐지 → 기법 적용 → 테스트 검증 워크플로우.
+triggers:
+  - "리팩토링"
+  - "개선"
+  - "정리"
+  - "클린업"
+  - "코드 스멜"
+  - "품질"
 ---
 
 # Refactoring Skill

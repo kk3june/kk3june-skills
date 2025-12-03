@@ -1,6 +1,12 @@
 ---
 name: context-collector
 description: 프롬프트에 부족한 정보를 탐지하고 현재 프로젝트 컨텍스트를 동적으로 수집하여 완전한 요구사항 구성. 문제 해결에 필요한 데이터가 부족할 때 사용.
+triggers:
+  - "구현해줘"
+  - "만들어줘"
+  - "추가해줘"
+  - "개발해줘"
+  - "기능"
 ---
 
 # Context Collector
