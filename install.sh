@@ -19,15 +19,20 @@ fi
 echo "📦 스킬을 복사합니다..."
 cp -r "$SCRIPT_DIR/skills/"* "$SKILLS_DIR/"
 
+# CLAUDE.md 복사 (스킬 자동 트리거 규칙)
+echo "📋 CLAUDE.md를 복사합니다..."
+cp "$SCRIPT_DIR/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+
 echo ""
 echo "✅ 설치가 완료되었습니다!"
 echo ""
 echo "설치된 스킬:"
 echo "  - context-collector: 프로젝트 스택 탐지 및 스킬 라우팅"
 echo "  - skill-manager: 스킬 생성/동기화 관리"
-echo "  - impl-frontend-react: React/Next.js/Vite 구현"
+echo "  - impl-frontend-react: React/Vite 구현"
 echo "  - refactoring: 코드 품질 개선"
 echo ""
-echo "📍 설치 위치: $SKILLS_DIR"
+echo "📍 스킬 위치: $SKILLS_DIR"
+echo "📍 트리거 규칙: $HOME/.claude/CLAUDE.md"
 echo ""
 echo "💡 사용법: Claude Code에서 기능 구현이나 리팩토링을 요청하세요."
